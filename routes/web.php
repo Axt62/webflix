@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\PolitesseController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +25,24 @@ Route::get('/au-revoir', [PolitesseController::class, 'goodBye']);
 Route::get('/bonjour/{name}', [PolitesseController::class, 'hellosomeone']);
 Route::get('/a-propos', [AboutController::class, 'aPropos']);
 Route::get('/a-propos/{user}',  [AboutController::class, 'show']);
+
+
+Route::get('/exercice/categories', function () {
+    return view('exercice.categories',[
+        'categories' => Category::all()
+    ]);
+});
+
+Route::get('exercice/categories/creer' , function(){
+    Category::create([
+        'name' => 'Test'
+    ]);
+
+    return redirect('/exercice/categories');
+});
+
+route::get ('/exercice/categories/{id}', function ($id){
+    dump($id);
+    $category = Category::find($id);
+    return $category->name;
+});
