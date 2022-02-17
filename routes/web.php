@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\PolitesseController;
 use App\Models\Category;
+use App\Models\Movie;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +27,8 @@ Route::get('/bonjour/{name}', [PolitesseController::class, 'hellosomeone']);
 Route::get('/a-propos', [AboutController::class, 'aPropos']);
 Route::get('/a-propos/{user}',  [AboutController::class, 'show']);
 
+Route::get('');
+
 
 Route::get('/exercice/categories', function () {
     return view('exercice.categories',[
@@ -41,8 +44,15 @@ Route::get('exercice/categories/creer' , function(){
     return redirect('/exercice/categories');
 });
 
-route::get ('/exercice/categories/{id}', function ($id){
+Route::get ('/exercice/categories/{id}', function ($id){
     dump($id);
     $category = Category::find($id);
     return $category->name;
 });
+
+Route::get ('/exercice/films', function () {
+    return view('exercice.films',[
+        'movies' => Movie::all()
+    ]);
+});
+
