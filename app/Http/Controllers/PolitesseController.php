@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 class PolitesseController 
 {
-    public function hello()
+    public function helloEveryone()
     {
         return view('hello', [
             'name' => 'Fiorella',

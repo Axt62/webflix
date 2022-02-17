@@ -22,10 +22,5 @@ Route::get('/', function () {
 Route::get('/bonjour', [PolitesseController::class, 'helloEveryone']);
 Route::get('/au-revoir', [PolitesseController::class, 'goodBye']);
 Route::get('/bonjour/{name}', [PolitesseController::class, 'hellosomeone']);
-Route::get('/a-propos/{name}', [AboutController::class, 'aPropos']);
-
-Route::get('/a-propos/{user}', function ($user) {
-    return view('about-show', [
-        'user' => $user,
-    ]);
-});
+Route::get('/a-propos', [AboutController::class, 'aPropos']);
+Route::get('/a-propos/{user}',  [AboutController::class, 'show']);

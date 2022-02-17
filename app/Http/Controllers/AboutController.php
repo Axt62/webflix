@@ -5,11 +5,18 @@ namespace App\Http\Controllers;
 
 class AboutController 
 {
-    public function aPropos($name){
+    public function aPropos(){
 
         return view('about', [
-            'name' => $name,
+            'name' => 'apropos',
             'team' => ['Fiorella', 'Marina', 'Matthieu'],
+        ]);
+    }
+
+    public function show($user)
+    {
+        return view('about-show', [
+            'user' => $user,
         ]);
     }
 }
