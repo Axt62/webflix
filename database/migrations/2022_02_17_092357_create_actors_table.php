@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('id');
             $table->text('message');
             $table->string('avatar')->nullable();
+            $table->date('birthday')->nullable();
             $table->integer('movie_id');
             $table->integer('user_id')->nullable();
         });
